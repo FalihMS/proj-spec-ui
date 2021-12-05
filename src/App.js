@@ -1,61 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { Menu } from 'react-feather';
 import HeaderComponent from './components/Header';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import faker from 'faker';
+import Chart from './components/Chart';
+import { Card, CardBody } from './components/Card';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement
-);
-
-const options = {
-  scales: {
-    x: {
-      ticks: {
-        color: 'rgb(255, 99, 132)',
-      },
-      grid: {
-          display: false,
-      }
-    },
-    y: {
-      ticks: {
-        color: 'rgb(255, 99, 132)',
-      },
-    }
-  },
-  elements: {
-    bar: {
-      borderWidth: 1,
-    },
-  },
-  responsive: true,
-  maintainAspectRatio:false
-};
-
-const labels = ['Jan', 'Feb', 'Mar', 'Apr'];
-
-const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Pendapatan (Jt)',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 5 })),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    }
-  ],
-};
 function App() {
   return (
     <div className="App">
@@ -63,23 +12,67 @@ function App() {
         Title="Dashboard"
         Icon={<Menu/>}
       />
-      <div style={{padding:10, margin:10, border:'1px solid rgb(255, 99, 132)', borderRadius:10, width:'50%'}}>
-        <Bar options={options} data={data} />
+
+      <div>
+        <Card>
+          <CardBody>
+            <p>Stadium Arena</p>
+            <p>Tangerang Selatan - Banten</p>
+          </CardBody>
+        </Card>  
       </div>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <div style={{display:'flex'}}>
+        <div style={{width:'50%'}}>
+          <Card>
+            <CardBody>
+              <p>4.5</p>
+              <p>Rating</p>
+            </CardBody>
+          </Card>  
+          <Card>
+            <Chart />
+            <CardBody>
+              <p>5.30 Jt</p>
+              <p>Pendapatan</p>
+            </CardBody>
+          </Card>         
+        </div>
+
+        <div style={{width:'50%'}}>
+          <Card>
+            <Chart />
+            <CardBody>
+              <p>150 Kali</p>
+              <p>Booking Dibuat</p>
+            </CardBody>
+          </Card>         
+          <Card>
+            <CardBody>
+              <p>14:00</p>
+              <p>Waktu Favorit</p>
+            </CardBody>
+          </Card>  
+        </div>
+      </div>
+
+      <div>
+        <Card>
+          <CardBody>
+            <div style={{display:'flex'}}>
+              <div style={{width:'50%'}}>
+                <p>S</p>
+                <p>Hello World</p>
+              </div>
+
+              <div style={{width:'50%', textAlign:'right',display:'flex', justifyContent:'center', alignItems:'center'}}>
+                <p>#1 Favorit</p>                
+              </div>
+            </div>
+          </CardBody>
+        </Card>  
+      </div>
+
     </div>
   );
 }
