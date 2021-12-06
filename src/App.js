@@ -1,9 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 
+function Chart(){
+  return(
+    <div>
+      <p>Hello World</p>
+    </div>
+  )
+}
+
 function App() {
   return (
     <div className="App">
+      <Chart />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
